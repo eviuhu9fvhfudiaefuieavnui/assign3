@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace assign3
 {
-    public partial class Inventoryserive : Form
+    public partial class UC_Orders : UserControl
     {
-        public Inventoryserive()
+        public UC_Orders()
         {
             InitializeComponent();
-        }
-
-        private void Inventoryserive_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
