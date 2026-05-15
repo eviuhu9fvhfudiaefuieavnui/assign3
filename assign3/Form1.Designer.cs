@@ -28,39 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hmbutton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnInv = new System.Windows.Forms.Button();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // hmbutton
+            // btnHome
             // 
-            this.hmbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.hmbutton.Location = new System.Drawing.Point(21, 12);
-            this.hmbutton.Name = "hmbutton";
-            this.hmbutton.Size = new System.Drawing.Size(100, 52);
-            this.hmbutton.TabIndex = 0;
-            this.hmbutton.Text = "Home";
-            this.hmbutton.UseVisualStyleBackColor = true;
+            this.btnHome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnHome.Location = new System.Drawing.Point(20, 20);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(120, 40);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // button1
+            // btnInv
             // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(150, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 52);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Inventory";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInv.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnInv.Location = new System.Drawing.Point(150, 20);
+            this.btnInv.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnInv.Name = "btnInv";
+            this.btnInv.Size = new System.Drawing.Size(120, 40);
+            this.btnInv.TabIndex = 1;
+            this.btnInv.Text = "Inventory";
+            this.btnInv.UseVisualStyleBackColor = true;
+            this.btnInv.Click += new System.EventHandler(this.btnInv_Click);
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Location = new System.Drawing.Point(0, 70);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(800, 580);
+            this.pnlContent.TabIndex = 2;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.hmbutton);
+            this.ClientSize = new System.Drawing.Size(800, 650);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.btnInv);
+            this.Controls.Add(this.btnHome);
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -70,8 +85,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button hmbutton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnInv;
+        private System.Windows.Forms.Panel pnlContent;
     }
 }
 

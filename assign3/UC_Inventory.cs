@@ -65,7 +65,7 @@ namespace assign3
             ClearFields();
         }
 
-        // Checks all inputs are valid before adding or updating - returns true if everything is fine
+        // Checks all inputs are valid - returns true if everything is fine
         private bool ValidateInputs()
         {
             // Name can only have letters, numbers and spaces - no special characters like #, $, @
@@ -210,4 +210,5 @@ namespace assign3
 
         }
     }
+
 }
