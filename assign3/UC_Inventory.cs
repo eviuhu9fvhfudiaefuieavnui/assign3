@@ -15,57 +15,59 @@ namespace assign3
             InitializeComponent();
         }
 
-        // BindingList and BindingSource allow the grid to update automatically when data changes
+        // BindingList updates the grid automatically when data changes
+        // BindingSource connects the list to the grid
         private BindingList<Product> _inventoryList = new BindingList<Product>();
         private BindingSource _bindingSource = new BindingSource();
 
-        // Relative path - the csv file must be in the same folder as the program
+        // Path to the CSV file - must be in the same folder as the program
         string filePath = "./products.csv";
 
-        // Runs when this screen is loaded
+        // Runs when this screen opens
         private void UC_Inventory_Load(object sender, EventArgs e)
         {
             string path = filePath;
 
-            // 1. Load the data into a temporary list
+            // 1. Load products from the CSV into a temporary list
             var tempData = InventoryService.LoadFromCSV(path);
 
-            // 2. Clear the BindingList and add the loaded data
+            // 2. Clear the BindingList then add each product from the temp list
             _inventoryList.Clear();
             foreach (var item in tempData)
             {
                 _inventoryList.Add(item);
             }
 
-            // 3. Bind the BindingList to the grid
+            // 3. Connect the BindingList to the grid so products show up
             dgvInventory.DataSource = _inventoryList;
         }
 
         // Runs when the Add button is clicked
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // 1. Validation
+            // 1. Stop if any inputs are invalid
             if (!ValidateInputs()) return;
 
-            // 2. Create the new product using the textbox values
+            // 2. Read values from the input fields
             int newId = _inventoryList.Count + 1000;
             string name = txtName.Text;
             string brand = txtBrand.Text;
             decimal price = decimal.Parse(txtPrice.Text);
             int quantity = int.Parse(txtQuantity.Text);
 
-            // Use the constructor to build a Product object and add it to the list
+            // 3. Build a new Product object using the constructor and add it to the list
             Product newProduct = new Product(newId, name, brand, price, quantity);
             _inventoryList.Add(newProduct);
 
-            // 4. Refresh the grid to show the new item
+            // 4. Refresh the grid to show the new product
             _bindingSource.ResetBindings(false);
 
-            // 5. Clear fields for the next entry
+            // 5. Clear the input fields ready for the next entry
             ClearFields();
         }
 
-        // Checks all inputs are valid - returns true if everything is fine
+        // Checks all inputs are valid before adding or updating
+        // Returns true if everything is fine, false if something is wrong
         private bool ValidateInputs()
         {
             // Name can only have letters, numbers and spaces - no special characters like #, $, @
@@ -75,7 +77,7 @@ namespace assign3
                 return false;
             }
 
-            // Price must be a positive decimal number
+            // Price must be a positive number with decimals allowed
             if (!decimal.TryParse(txtPrice.Text, out decimal price) || price < 0)
             {
                 MessageBox.Show("Please enter a valid positive price.");
@@ -92,7 +94,7 @@ namespace assign3
             return true;
         }
 
-        // Clears all input fields so they are ready for the next entry
+        // Empties all the input fields so they are ready for the next entry
         private void ClearFields()
         {
             txtID.Clear();
@@ -105,22 +107,22 @@ namespace assign3
         // Runs when the Update button is clicked
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // 1. Check if a Product ID is present to identify the record
+            // 1. Check there is a Product ID to identify which product to update
             if (!int.TryParse(txtID.Text, out int idToUpdate))
             {
                 MessageBox.Show("Please select a product from the grid to update.");
                 return;
             }
 
-            // 2. Find the product in the BindingList using the ID
+            // 2. Search the list for the product with that ID
             var productToUpdate = _inventoryList.FirstOrDefault(p => p.ProductID == idToUpdate);
 
             if (productToUpdate != null)
             {
-                // 3. Validate the new inputs before applying changes
+                // 3. Check the new inputs are valid before saving changes
                 if (ValidateInputs())
                 {
-                    // 4. Update the object properties (excluding ProductID)
+                    // 4. Update the product's details (ID stays the same)
                     productToUpdate.ProductName = txtName.Text;
                     productToUpdate.ProductBrand = txtBrand.Text;
                     productToUpdate.ProductPrice = decimal.Parse(txtPrice.Text);
@@ -130,7 +132,7 @@ namespace assign3
                     _bindingSource.ResetBindings(false);
                     dgvInventory.Refresh();
 
-                    // 6. Clear input fields
+                    // 6. Clear the input fields
                     ClearFields();
                     MessageBox.Show("Product updated successfully in the list.");
                 }
@@ -139,11 +141,6 @@ namespace assign3
             {
                 MessageBox.Show("Product ID not found in inventory.");
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         // Runs when the Delete button is clicked
@@ -157,8 +154,7 @@ namespace assign3
                 return;
             }
 
-            // Find the product in the BindingList
-            // This checks if the ID matches OR if the Name matches (ignoring case)
+            // Search the list by ID or Name (ignoring uppercase/lowercase)
             Product productToDelete = _inventoryList.FirstOrDefault(p =>
                 p.ProductID.ToString() == searchTerm ||
                 p.ProductName.Equals(searchTerm, StringComparison.OrdinalIgnoreCase));
@@ -171,9 +167,8 @@ namespace assign3
 
                 if (result == DialogResult.Yes)
                 {
-                    // Remove from the BindingList - the grid updates automatically
+                    // Remove from the list - the grid updates automatically
                     _inventoryList.Remove(productToDelete);
-
                     txtDelete.Clear();
                     MessageBox.Show("Product deleted successfully.");
                 }
@@ -184,17 +179,17 @@ namespace assign3
             }
         }
 
-        // Runs when the Save button is clicked - writes the list back to the CSV file
+        // Runs when the Save button is clicked - writes everything back to the CSV file
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 string path = filePath;
 
-                // Convert the BindingList to a standard List to pass to the service
+                // Convert the BindingList to a normal List to pass to InventoryService
                 List<Product> listToSave = _inventoryList.ToList();
 
-                // Call the save method
+                // Call the save method which writes each product as a line in the CSV
                 InventoryService.SaveToCSV(path, listToSave);
 
                 MessageBox.Show("Changes saved to CSV successfully.");
@@ -205,10 +200,10 @@ namespace assign3
             }
         }
 
+        // Runs when the Clear button is clicked - empties all input fields
         private void btnClearProduct_Click(object sender, EventArgs e)
         {
-
+            ClearFields();
         }
     }
-
 }

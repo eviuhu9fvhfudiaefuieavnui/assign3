@@ -16,206 +16,271 @@
         private void InitializeComponent()
         {
             this.dgvInventory = new System.Windows.Forms.DataGridView();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbProductDetails = new System.Windows.Forms.GroupBox();
             this.txtBrand = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.lblBrand = new System.Windows.Forms.Label();
+            this.btnClearProduct = new System.Windows.Forms.Button();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtDelete = new System.Windows.Forms.TextBox();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.gbDelete = new System.Windows.Forms.GroupBox();
+            this.txtDelete = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnClearProduct = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblBrand = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.lblQuantity = new System.Windows.Forms.Label();
-            this.lblDelete = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
+            this.gbProductDetails.SuspendLayout();
+            this.gbDelete.SuspendLayout();
             this.SuspendLayout();
 
-            // Grid at the top - shows all products
-            this.dgvInventory.Location = new System.Drawing.Point(10, 10);
-            this.dgvInventory.Name = "dgvInventory";
-            this.dgvInventory.Size = new System.Drawing.Size(760, 200);
-            this.dgvInventory.TabIndex = 0;
+            this.dgvInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID, this.Brand, this.ProductName, this.Price, this.Quantity});
+            this.dgvInventory.Location = new System.Drawing.Point(387, 44);
+            this.dgvInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvInventory.Name = "dgvInventory";
+            this.dgvInventory.ReadOnly = true;
+            this.dgvInventory.RowHeadersWidth = 51;
+            this.dgvInventory.Size = new System.Drawing.Size(567, 513);
+            this.dgvInventory.TabIndex = 0;
 
-            // Title label
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(10, 220);
-            this.label1.Name = "label1";
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Edit Product:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.ID.DataPropertyName = "ProductID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
 
-            // Row 1 - ID
-            this.lblID.Text = "ID:";
-            this.lblID.Location = new System.Drawing.Point(10, 255);
-            this.lblID.Size = new System.Drawing.Size(60, 20);
-            this.lblID.TabIndex = 14;
+            this.Brand.DataPropertyName = "ProductBrand";
+            this.Brand.HeaderText = "Brand";
+            this.Brand.MinimumWidth = 6;
+            this.Brand.Name = "Brand";
+            this.Brand.ReadOnly = true;
 
-            this.txtID.Location = new System.Drawing.Point(75, 252);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 1;
-            this.txtID.Text = "";
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
 
-            // Row 2 - Name
-            this.lblName.Text = "Name:";
-            this.lblName.Location = new System.Drawing.Point(10, 285);
-            this.lblName.Size = new System.Drawing.Size(60, 20);
-            this.lblName.TabIndex = 15;
+            this.Price.DataPropertyName = "ProductPrice";
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
 
-            this.txtName.Location = new System.Drawing.Point(75, 282);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(150, 20);
-            this.txtName.TabIndex = 2;
-            this.txtName.Text = "";
+            this.Quantity.DataPropertyName = "ProductQuantity";
+            this.Quantity.HeaderText = "Stock Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
 
-            // Row 3 - Brand
-            this.lblBrand.Text = "Brand:";
-            this.lblBrand.Location = new System.Drawing.Point(10, 315);
-            this.lblBrand.Size = new System.Drawing.Size(60, 20);
-            this.lblBrand.TabIndex = 16;
+            this.gbProductDetails.Controls.Add(this.txtBrand);
+            this.gbProductDetails.Controls.Add(this.lblBrand);
+            this.gbProductDetails.Controls.Add(this.btnClearProduct);
+            this.gbProductDetails.Controls.Add(this.txtQuantity);
+            this.gbProductDetails.Controls.Add(this.lblQuantity);
+            this.gbProductDetails.Controls.Add(this.txtPrice);
+            this.gbProductDetails.Controls.Add(this.lblPrice);
+            this.gbProductDetails.Controls.Add(this.txtName);
+            this.gbProductDetails.Controls.Add(this.lblName);
+            this.gbProductDetails.Controls.Add(this.txtID);
+            this.gbProductDetails.Controls.Add(this.lblID);
+            this.gbProductDetails.Location = new System.Drawing.Point(55, 44);
+            this.gbProductDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbProductDetails.Name = "gbProductDetails";
+            this.gbProductDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbProductDetails.Size = new System.Drawing.Size(245, 219);
+            this.gbProductDetails.TabIndex = 1;
+            this.gbProductDetails.TabStop = false;
+            this.gbProductDetails.Text = "Product Details";
 
-            this.txtBrand.Location = new System.Drawing.Point(75, 312);
+            this.txtBrand.Location = new System.Drawing.Point(93, 119);
+            this.txtBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBrand.Name = "txtBrand";
-            this.txtBrand.Size = new System.Drawing.Size(150, 20);
-            this.txtBrand.TabIndex = 3;
-            this.txtBrand.Text = "";
+            this.txtBrand.Size = new System.Drawing.Size(132, 22);
+            this.txtBrand.TabIndex = 9;
 
-            // Row 4 - Price
-            this.lblPrice.Text = "Price:";
-            this.lblPrice.Location = new System.Drawing.Point(10, 345);
-            this.lblPrice.Size = new System.Drawing.Size(60, 20);
-            this.lblPrice.TabIndex = 17;
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Location = new System.Drawing.Point(8, 123);
+            this.lblBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(43, 16);
+            this.lblBrand.TabIndex = 8;
+            this.lblBrand.Text = "Brand";
 
-            this.txtPrice.Location = new System.Drawing.Point(75, 342);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtPrice.TabIndex = 4;
-            this.txtPrice.Text = "";
-
-            // Row 5 - Quantity
-            this.lblQuantity.Text = "Quantity:";
-            this.lblQuantity.Location = new System.Drawing.Point(10, 375);
-            this.lblQuantity.Size = new System.Drawing.Size(60, 20);
-            this.lblQuantity.TabIndex = 18;
-
-            this.txtQuantity.Location = new System.Drawing.Point(75, 372);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantity.TabIndex = 5;
-            this.txtQuantity.Text = "";
-
-            // Add Update Clear buttons in a row
-            this.btnAdd.Location = new System.Drawing.Point(10, 410);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 28);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-
-            this.btnUpdate.Location = new System.Drawing.Point(95, 410);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 28);
-            this.btnUpdate.TabIndex = 9;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-
-            this.btnClearProduct.Location = new System.Drawing.Point(180, 410);
+            this.btnClearProduct.Location = new System.Drawing.Point(8, 183);
+            this.btnClearProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearProduct.Name = "btnClearProduct";
-            this.btnClearProduct.Size = new System.Drawing.Size(75, 28);
-            this.btnClearProduct.TabIndex = 12;
+            this.btnClearProduct.Size = new System.Drawing.Size(215, 28);
+            this.btnClearProduct.TabIndex = 5;
             this.btnClearProduct.Text = "Clear";
             this.btnClearProduct.UseVisualStyleBackColor = true;
             this.btnClearProduct.Click += new System.EventHandler(this.btnClearProduct_Click);
 
-            // Delete row
-            this.lblDelete.Text = "Delete by ID/Name:";
-            this.lblDelete.Location = new System.Drawing.Point(10, 455);
-            this.lblDelete.Size = new System.Drawing.Size(130, 20);
-            this.lblDelete.TabIndex = 19;
+            this.txtQuantity.Location = new System.Drawing.Point(93, 151);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(132, 22);
+            this.txtQuantity.TabIndex = 7;
 
-            this.txtDelete.Location = new System.Drawing.Point(145, 452);
-            this.txtDelete.Name = "txtDelete";
-            this.txtDelete.Size = new System.Drawing.Size(120, 20);
-            this.txtDelete.TabIndex = 6;
-            this.txtDelete.Text = "";
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Location = new System.Drawing.Point(8, 155);
+            this.lblQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(55, 16);
+            this.lblQuantity.TabIndex = 6;
+            this.lblQuantity.Text = "Quantity";
 
-            // Delete and Save buttons
-            this.btnDelete.Location = new System.Drawing.Point(10, 490);
+            this.txtPrice.Location = new System.Drawing.Point(93, 87);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(132, 22);
+            this.txtPrice.TabIndex = 5;
+
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(8, 91);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(38, 16);
+            this.lblPrice.TabIndex = 4;
+            this.lblPrice.Text = "Price";
+
+            this.txtName.Location = new System.Drawing.Point(93, 55);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(132, 22);
+            this.txtName.TabIndex = 3;
+
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(8, 59);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(44, 16);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Name";
+
+            this.txtID.Location = new System.Drawing.Point(93, 23);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(132, 22);
+            this.txtID.TabIndex = 1;
+
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(8, 27);
+            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(20, 16);
+            this.lblID.TabIndex = 0;
+            this.lblID.Text = "ID";
+
+            this.btnAdd.Location = new System.Drawing.Point(55, 271);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 28);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+
+            this.btnUpdate.Location = new System.Drawing.Point(196, 271);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(100, 28);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+
+            this.btnDelete.Location = new System.Drawing.Point(0, 23);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 28);
-            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Size = new System.Drawing.Size(100, 28);
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
-            this.btnSave.Location = new System.Drawing.Point(95, 490);
+            this.gbDelete.Controls.Add(this.txtDelete);
+            this.gbDelete.Controls.Add(this.btnDelete);
+            this.gbDelete.Location = new System.Drawing.Point(55, 318);
+            this.gbDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbDelete.Name = "gbDelete";
+            this.gbDelete.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbDelete.Size = new System.Drawing.Size(267, 65);
+            this.gbDelete.TabIndex = 5;
+            this.gbDelete.TabStop = false;
+            this.gbDelete.Text = "Delete Product with ID/Name";
+
+            this.txtDelete.Location = new System.Drawing.Point(108, 27);
+            this.txtDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDelete.Name = "txtDelete";
+            this.txtDelete.Size = new System.Drawing.Size(132, 22);
+            this.txtDelete.TabIndex = 5;
+
+            this.btnSave.Location = new System.Drawing.Point(55, 510);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(90, 28);
-            this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save to CSV";
+            this.btnSave.Size = new System.Drawing.Size(159, 28);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 
-            // UC_Inventory settings
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblDelete);
-            this.Controls.Add(this.btnClearProduct);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.gbDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtDelete);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.txtBrand);
-            this.Controls.Add(this.lblBrand);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.gbProductDetails);
             this.Controls.Add(this.dgvInventory);
-            this.Load += new System.EventHandler(this.UC_Inventory_Load);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_Inventory";
-            this.Size = new System.Drawing.Size(800, 550);
+            this.Size = new System.Drawing.Size(972, 608);
+            this.Load += new System.EventHandler(this.UC_Inventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
+            this.gbProductDetails.ResumeLayout(false);
+            this.gbProductDetails.PerformLayout();
+            this.gbDelete.ResumeLayout(false);
+            this.gbDelete.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
         }
 
-        // All controls declared here so the whole class can use them
         private System.Windows.Forms.DataGridView dgvInventory;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtBrand;
-        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.GroupBox gbProductDetails;
         private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.TextBox txtDelete;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Button btnClearProduct;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnClearProduct;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.GroupBox gbDelete;
+        private System.Windows.Forms.TextBox txtDelete;
+        private System.Windows.Forms.TextBox txtBrand;
         private System.Windows.Forms.Label lblBrand;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblQuantity;
-        private System.Windows.Forms.Label lblDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.Button btnSave;
     }
 }

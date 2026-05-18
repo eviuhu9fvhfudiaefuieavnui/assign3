@@ -36,10 +36,10 @@
             // btnHome
             // 
             this.btnHome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnHome.Location = new System.Drawing.Point(20, 20);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnHome.Location = new System.Drawing.Point(53, 48);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(120, 40);
+            this.btnHome.Size = new System.Drawing.Size(320, 95);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
@@ -48,10 +48,10 @@
             // btnInv
             // 
             this.btnInv.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnInv.Location = new System.Drawing.Point(150, 20);
-            this.btnInv.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnInv.Location = new System.Drawing.Point(400, 48);
+            this.btnInv.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
             this.btnInv.Name = "btnInv";
-            this.btnInv.Size = new System.Drawing.Size(120, 40);
+            this.btnInv.Size = new System.Drawing.Size(320, 95);
             this.btnInv.TabIndex = 1;
             this.btnInv.Text = "Inventory";
             this.btnInv.UseVisualStyleBackColor = true;
@@ -59,9 +59,10 @@
             // 
             // pnlContent
             // 
-            this.pnlContent.Location = new System.Drawing.Point(0, 70);
+            this.pnlContent.Location = new System.Drawing.Point(0, 167);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(800, 580);
+            this.pnlContent.Size = new System.Drawing.Size(1100, 630);
             this.pnlContent.TabIndex = 2;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
@@ -70,12 +71,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 650);
+            this.ClientSize = new System.Drawing.Size(1170, 700);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.btnInv);
             this.Controls.Add(this.btnHome);
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
             this.Name = "Form1";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Form1_Load);
