@@ -55,14 +55,16 @@ namespace assign3
             pnlContent.Controls.Add(newScreen);
         }
 
-        private void hmbutton_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnInv_Click_1(object sender, EventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
     }
+
 }
+
